@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -25,7 +24,7 @@
             top: 10px;
             right: 20px;
             color: #fff;
-            text-decoration: none;   文字修饰:没有;
+            text-decoration: none;
         }
         .github-icon {
             width: 24px;
@@ -34,7 +33,7 @@
         }
         .container {
             max-width: 800px;
-            margin: 40px auto;   Margin: 40px auto;
+            margin: 40px auto;
             padding: 20px;
             background-color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -59,88 +58,83 @@
         code {
             font-family: 'Source Code Pro', monospace;
         }
-        a {   一个{
-            color: #4CAF50;   颜色:# 4 caf50;
-            text-decoration: none;   文字修饰:没有;
+        a {
+            color: #4CAF50;
+            text-decoration: none;
         }
-        a:hover {   答:{徘徊
-            text-decoration: underline;文字修饰:下划线;
+        a:hover {
+            text-decoration: underline;
         }
         @media (max-width: 600px) {
             .container {
-                margin: 20px;   保证金:20 px;
-                padding: 15px;   填充:15 px;
+                margin: 20px;
+                padding: 15px;
             }
             .header {
-                padding: 15px 0;   Padding: 15px 0;
+                padding: 15px 0;
             }
         }
-    </style>   > < /风格
+    </style>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
-</head>   > < /头
-<body>   身体< >
-<div class="header">   
-
+</head>
+<body>
+<div class="header">
     <h1>镜像使用说明</h1>
     <a href="https://github.com/lixd/cloudflare-docker-proxy" target="_blank" class="github-link">
         <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" class="github-icon">
-    </a>   < / >
+    </a>
 </div>
 <div class="container">
     <div class="content">
         <p>为了加速 Docker 镜像拉取，你可以使用以下命令设置 registry mirror:</p>
         <pre><code id="registry-config">sudo tee /etc/docker/daemon.json &lt;&lt;EOF
 {
-    "registry-mirrors": ["https://{{host}}"]“registry-mirrors”:(" https://{{主机}}”)
+    "registry-mirrors": ["https://{{host}}"]
 }
 EOF
 # 配置完后需要重启 Docker 服务
-sudo systemctl restart docker执行命令systemctl restart docker
-</code></pre>   < /代码> < / >之前
+sudo systemctl restart docker
+</code></pre>
         <p>使用该代理从不同的镜像仓库拉取镜像，请参考以下命令：</p>
-        <pre><code id="commands">   
-
+        <pre><code id="commands">
 # docker pull nginx:latest
-docker pull docker.{{host}}/library/nginx:latest  # 拉取 Docker 官方镜像docker pull docker.{{host}}/library
-ginx:latest  # 拉取 Docker 官方镜像
-   颜色： #fff;
-# docker pull quay.io/coreos/etcd:latest# docker pull quay.io/coreos/etcd:最新的   Padding: 20px 0;
-docker pull quay.{{host}}/coreos/etcd:latest  # 拉取 Quay 镜像   text-align:中心;
-Box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-# docker pull gcr.io/google-containers/busybox:latest# docker pull gcr.io/google-containers/busybox:最新   位置:相对;
+docker pull docker.{{host}}/library/nginx:latest  # 拉取 Docker 官方镜像
+
+# docker pull quay.io/coreos/etcd:latest
+docker pull quay.{{host}}/coreos/etcd:latest  # 拉取 Quay 镜像
+
+# docker pull gcr.io/google-containers/busybox:latest
 docker pull gcr.{{host}}/google-containers/busybox:latest  # 拉取 GCR 镜像
 
-# docker pull k8s.gcr.io/pause:latest# docker pull k8s.gcr.io/pause:最新   位置:绝对的;
-docker pull k8s-gcr.{{host}}/pause:latest  # 拉取 k8s.gcr.io 镜像   上图:10 px;
-   右:20 px;
-# docker pull registry.k8s.io/pause:latest# docker pull registry.k8 .io/pause:最新的   颜色： #fff;
+# docker pull k8s.gcr.io/pause:latest
+docker pull k8s-gcr.{{host}}/pause:latest  # 拉取 k8s.gcr.io 镜像
+
+# docker pull registry.k8s.io/pause:latest
 docker pull k8s.{{host}}/pause:latest  # 拉取 registry.k8s.io 镜像
 
-# docker pull ghcr.io/github/super-linter:latest# docker拉ghcr.io/github/super-linter:最新
-docker pull ghcr.{{host}}/github/super-linter:latest  # 拉取 GitHub 容器镜像   宽度:24 px;
-   高度:24 px;
-# docker pull docker.cloudsmith.io/public/repo/image:latest# docker pull docker.cloudsmith.io/public/repo/image:最新   vertical-align:中间;
+# docker pull ghcr.io/github/super-linter:latest
+docker pull ghcr.{{host}}/github/super-linter:latest  # 拉取 GitHub 容器镜像
+
+# docker pull docker.cloudsmith.io/public/repo/image:latest
 docker pull cloudsmith.{{host}}/public/repo/image:latest  # 拉取 Cloudsmith 镜像
-</code></pre>   < /代码> < / >之前
+</code></pre>
         <p>为了避免 Worker 用量耗尽，你可以手动 pull 镜像然后 re-tag 之后 push 至本地镜像仓库。</p>
     </div>
-</div>   填充:20 px;
-<div class="footer">   
-Box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    <p>Powered by Cloudflare Workers</p>由Cloudflare Workers驱动
+</div>
+<div class="footer">
+    <p>Powered by Cloudflare Workers</p>
     <p><a href="https://lixueduan.com" target="_blank">访问博客 探索云原生</a></p>
 </div>
-<script>   < >脚本
-    document.addEventListener('DOMContentLoaded'   “DOMContentLoaded”（DOMContentLoaded）, function   函数() {document.addEventListener（'DOMContentLoaded'   “DOMContentLoaded”（DOMContentLoaded）， function（） {
-        const   常量 host = window.location   位置.hostname   主机名;Const host = window.location   位置.hostname   主机名;
-        const   常量 mainDomain = host.split   分裂('.').slice   片(-2).join   加入('.');const   常量 mainDomain = host.split   分裂(“。”).slice   片 (2) . join   加入 (' . '   “……”);   text-align:中心;
-        const   常量 registryConfigElement = document.getElementById('registry-config');   Padding: 20px 0;
-        const   常量 commandsElement = document.getElementById('commands'   “命令”);const   常量 commandelement = document.getElementById('commands'   “命令”);
-   颜色： #fff;
-        registryConfigElement.innerHTML = registryConfigElement.innerHTML.replace(/{{host}}/g, host);registryConfigElement。innerHTML = registryConfigElement.innerHTML。替换(/{{主机}}/ g,主机);
-        commandsElement.innerHTML = commandsElement.innerHTML.replace(/{{host}}/g, mainDomain);commandsElement。innerHTML = commandelement .innerHTML。替换(/{{主机}}/ g, mainDomain);
-    });   }）;
-</script>   > < /脚本   颜色： #f8f8f2;
-</body>   身体< / >   填充:15 px;
-</html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const host = window.location.hostname;
+        const mainDomain = host.split('.').slice(-2).join('.');
+        const registryConfigElement = document.getElementById('registry-config');
+        const commandsElement = document.getElementById('commands');
 
+        registryConfigElement.innerHTML = registryConfigElement.innerHTML.replace(/{{host}}/g, host);
+        commandsElement.innerHTML = commandsElement.innerHTML.replace(/{{host}}/g, mainDomain);
+    });
+</script>
+</body>
+</html>
