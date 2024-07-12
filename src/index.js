@@ -14,6 +14,9 @@ const routes = {
   "k8s.yountraveler.top": "https://registry.k8s.io",
   "ghcr.yountraveler.top": "https://ghcr.io",
   "cloudsmith.yountraveler.top": "https://docker.cloudsmith.io",
+
+  // staging
+  "docker-staging.yountraveler.top": dockerHub,
 };
 
 function routeByHosts(host) {
