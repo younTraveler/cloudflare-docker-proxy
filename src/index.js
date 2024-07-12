@@ -43,6 +43,7 @@ async function handleRequest(request) {
         status: 404,
       }
     );
+  }
 
   // return docs
   if (url.pathname === "/") {
@@ -52,8 +53,9 @@ async function handleRequest(request) {
         "content-type": "text/html"
       }
     });
-    
   }
+   
+ 
   const isDockerHub = upstream == dockerHub;
   const authorization = request.headers.get("Authorization");
   if (url.pathname == "/v2/") {
